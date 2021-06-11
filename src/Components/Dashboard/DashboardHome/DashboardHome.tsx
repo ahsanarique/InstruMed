@@ -1,10 +1,16 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import Sidebar from "../Sidebar/Sidebar";
+import AddInstrument from "../AddInstrument/AddInstrument";
 
 const DashboardHome = () => {
   return (
-    <div>
-      
-    </div>
+    <section>
+      <Link to="/dashboard">
+        <Sidebar />
+        <AddInstrument />
+      </Link>
+    </section>
   );
 };
 

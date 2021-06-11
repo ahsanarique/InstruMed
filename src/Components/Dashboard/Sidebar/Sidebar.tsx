@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const Sidebar = () => {
   return (
     <div>
-      
+      <h1>Sidebar Component</h1>
     </div>
   );
 };

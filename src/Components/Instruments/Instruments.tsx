@@ -1,32 +1,49 @@
-import React, {useState, useEffect} from 'react';
-import { Col, Row } from 'react-bootstrap';
-import fakeData from "../../FakeData/fakeData";
-import InstrumentCard from './InstrumentCard';
-import InstrumentDetail from './InstrumentDetail';
+import React, { FC, useState, useContext } from "react";
+import { Col, Row } from "react-bootstrap";
+import InstrumentCard from "./InstrumentCard";
+import InstrumentDetail from "./InstrumentDetail";
+import { Context } from "../../Context/Context";
 
-interface DataTypes {
-  BrandId: string; Name: string; TypeId: number; Comment: string;
+interface ModelTypes {
+  Id: number;
+  BrandId: string;
+  Name: string;
+  TypeId: number;
+  Comment: string;
+  Description: string;
 }
 
-const Instruments = () => {
-  
-  
-  const [instrumentData, setInstrumentData] = useState<DataTypes[] | []>([]);
-  
+const Instruments: FC = () => {
+  const { instrumentType } = useContext(Context);
+
   const [modalShow, setModalShow] = useState(false);
   const handleClose = () => setModalShow(false);
-  const handleShow = () => setModalShow(true);
-
-  useEffect(() => {
-    setInstrumentData(fakeData)
-  }, []);
+  const handleShow = () => {
+    setModalShow(true);
+  };
 
   return (
     <section className="my-5 mx-3">
       <Row>
-        {instrumentData?.map((item: DataTypes) => <Col className="my-3 text-center" sm={12} md={6} lg={4} key={item.TypeId} onClick={handleShow}>
-          <InstrumentCard BrandId={item.BrandId} Name={item.Name} TypeId={item.TypeId} Comment={item.Comment} />
-        </Col>)}
+        {instrumentType?.map((item: ModelTypes) => (
+          <Col
+            className="my-3 text-center"
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            key={item.Id}
+            onClick={() => handleShow()}
+          >
+            <InstrumentCard
+              BrandId={item.BrandId}
+              Name={item.Name}
+              TypeId={item.TypeId}
+              Comment={item.Comment}
+              Description={item.Description}
+            />
+          </Col>
+        ))}
       </Row>
       <InstrumentDetail show={modalShow} onHide={handleClose} />
     </section>
