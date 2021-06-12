@@ -11,6 +11,7 @@ const Instruments: FC = () => {
     instrumentData,
     getInstrumentData,
     setInstrumentData,
+    dataTitle,
   } = useContext(Context);
 
   const [modalShow, setModalShow] = useState(false);
@@ -44,6 +45,7 @@ const Instruments: FC = () => {
         instrumentData={instrumentData}
         show={modalShow}
         onHide={handleClose}
+        dataTitle={dataTitle}
       />
     </section>
   );

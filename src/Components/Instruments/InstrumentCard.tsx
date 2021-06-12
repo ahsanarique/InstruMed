@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { ModelTypes } from "../../TypeCheckers/TypeCheckers";
 import Card from "react-bootstrap/Card";
-import "./instrumentCard.css";
+import "./instruments.css";
 
 interface Props {
   item: ModelTypes;

@@ -4,3 +4,8 @@
   transition: 0.5s ease;
   cursor: pointer;
 }
+
+.modal-width {
+  width: 90vw;
+  max-width: 90vw;
+}

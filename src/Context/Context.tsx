@@ -15,6 +15,8 @@ function ContextProvider({ children }: Props) {
 
   const [instrumentData, setInstrumentData] = useState<ModelData[] | []>([]);
 
+  const [dataTitle, setDataTitle] = useState("");
+
   useEffect(() => {
     const url = "http://163.47.115.230:30000/api/overview/modeltype";
 
@@ -34,13 +36,17 @@ function ContextProvider({ children }: Props) {
     const deviceName = item.Name;
     const url = `http://163.47.115.230:30000/api/overview/modeldata/${deviceBrand}/${deviceName}`;
 
+    setDataTitle(`${deviceBrand} ${deviceName}`);
+
     axios
       .get(url, {
         headers: {
           authorization: sessionStorage.getItem("authorization"),
         },
       })
-      .then((res) => setInstrumentData(res.data));
+      .then((res) => {
+        setInstrumentData(res.data);
+      });
   };
 
   return (
@@ -52,6 +58,7 @@ function ContextProvider({ children }: Props) {
         instrumentData,
         setInstrumentData,
         getInstrumentData,
+        dataTitle,
       }}
     >
       {children}

@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../../Context/Context";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 const NavigationBar = () => {
+  const { loginStatus } = useContext(Context);
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Link to="/" className="navbar-brand">
@@ -18,9 +21,13 @@ const NavigationBar = () => {
             Dashboard
           </Link>
 
-          <Link to="/login" className="nav-link mx-3">
-            Login
-          </Link>
+          {!loginStatus ? (
+            <Link to="/login" className="nav-link mx-3">
+              Login
+            </Link>
+          ) : (
+            <Nav.Link className="mx-3">Logout</Nav.Link>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
