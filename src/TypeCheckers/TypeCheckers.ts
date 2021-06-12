@@ -1,5 +1,5 @@
 export interface ModelTypes {
-  Id: number;
+  Id?: number;
   BrandId: string;
   Name: string;
   TypeId: number;
@@ -17,4 +17,9 @@ export interface ModelData {
   Status: null | string;
   GroupId: null | number;
   ProtocolOrder: null | number;
+}
+
+export interface DeviceTypes {
+  Id: number;
+  Description: string;
 }

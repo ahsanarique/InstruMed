@@ -26,7 +26,6 @@ function App() {
 
         <PrivateRoute path="/dashboard">
           <DashboardHome />
-          <Footer />
         </PrivateRoute>
       </Switch>
     </main>

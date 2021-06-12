@@ -1,15 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Sidebar from "../Sidebar/Sidebar";
+import { Switch, Route } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
+import DashboardNav from "../DashboardNav/DashboardNav";
 import AddInstrument from "../AddInstrument/AddInstrument";
+import Footer from "../../Shared/Footer/Footer";
 
 const DashboardHome = () => {
   return (
     <section>
-      <Link to="/dashboard">
-        <Sidebar />
-        <AddInstrument />
-      </Link>
+      <Row>
+        <Col md={12}>
+          <DashboardNav />
+        </Col>
+
+        <Col md={12}>
+          <Switch>
+            <Route path="/dashboard/addNewModel">
+              <AddInstrument />
+            </Route>
+          </Switch>
+        </Col>
+      </Row>
+      <Footer />
     </section>
   );
 };

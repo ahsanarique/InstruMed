@@ -44,7 +44,7 @@ const InstrumentDetail: FC<Props> = ({
           </thead>
           <tbody>
             {instrumentData.map((item) => (
-              <tr>
+              <tr key={item.Id + item.DisplayName}>
                 <td>{item.Id ? item.Id : "N/A"}</td>
                 <td>{item.DataType ? item.DataType : "N/A"}</td>
                 <td>{item.GroupId ? item.GroupId : "N/A"}</td>
