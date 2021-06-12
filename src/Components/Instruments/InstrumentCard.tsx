@@ -1,30 +1,27 @@
 import React, { FC } from "react";
+import { ModelTypes } from "../../TypeCheckers/TypeCheckers";
 import Card from "react-bootstrap/Card";
 import "./instrumentCard.css";
 
 interface Props {
-  BrandId: string;
-  Name: string;
-  TypeId: number;
-  Comment: string;
-  Description: string;
+  item: ModelTypes;
+  getInstrumentData: (item: ModelTypes) => void;
 }
 
-const InstrumentCard: FC<Props> = ({
-  BrandId,
-  Name,
-  TypeId,
-  Comment,
-  Description,
-}) => {
+const InstrumentCard: FC<Props> = ({ item, getInstrumentData }) => {
   return (
-    <Card bg="light" className="animated" style={{ minHeight: "12rem" }}>
+    <Card
+      onClick={() => getInstrumentData(item)}
+      bg="light"
+      className="animated"
+      style={{ minHeight: "12rem" }}
+    >
       <Card.Body>
         <Card.Title>
-          {BrandId}: {Name}
+          {item.BrandId}: {item.Name}
         </Card.Title>
-        <Card.Text>{Description}</Card.Text>
-        <Card.Text>{Comment}</Card.Text>
+        <Card.Text>{item.Description}</Card.Text>
+        <Card.Text>{item.Comment}</Card.Text>
       </Card.Body>
     </Card>
   );

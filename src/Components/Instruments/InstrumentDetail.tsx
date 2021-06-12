@@ -1,12 +1,14 @@
 import React, { FC } from "react";
 import Modal from "react-bootstrap/Modal";
+import { ModelData } from "../../TypeCheckers/TypeCheckers";
 
 interface Props {
   show: boolean;
-  onHide: any;
+  onHide: () => void;
+  instrumentData: ModelData[] | [];
 }
 
-const InstrumentDetail: FC<Props> = ({ show, onHide }) => {
+const InstrumentDetail: FC<Props> = ({ show, onHide, instrumentData }) => {
   return (
     <Modal
       show={show}

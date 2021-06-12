@@ -3,21 +3,21 @@ import { Col, Row } from "react-bootstrap";
 import InstrumentCard from "./InstrumentCard";
 import InstrumentDetail from "./InstrumentDetail";
 import { Context } from "../../Context/Context";
-
-interface ModelTypes {
-  Id: number;
-  BrandId: string;
-  Name: string;
-  TypeId: number;
-  Comment: string;
-  Description: string;
-}
+import { ModelTypes } from "../../TypeCheckers/TypeCheckers";
 
 const Instruments: FC = () => {
-  const { instrumentType } = useContext(Context);
+  const {
+    instrumentType,
+    instrumentData,
+    getInstrumentData,
+    setInstrumentData,
+  } = useContext(Context);
 
   const [modalShow, setModalShow] = useState(false);
-  const handleClose = () => setModalShow(false);
+  const handleClose = () => {
+    setModalShow(false);
+    setInstrumentData([]);
+  };
   const handleShow = () => {
     setModalShow(true);
   };
@@ -35,17 +35,16 @@ const Instruments: FC = () => {
             key={item.Id}
             onClick={() => handleShow()}
           >
-            <InstrumentCard
-              BrandId={item.BrandId}
-              Name={item.Name}
-              TypeId={item.TypeId}
-              Comment={item.Comment}
-              Description={item.Description}
-            />
+            <InstrumentCard item={item} getInstrumentData={getInstrumentData} />
           </Col>
         ))}
       </Row>
-      <InstrumentDetail show={modalShow} onHide={handleClose} />
+
+      <InstrumentDetail
+        instrumentData={instrumentData}
+        show={modalShow}
+        onHide={handleClose}
+      />
     </section>
   );
 };
