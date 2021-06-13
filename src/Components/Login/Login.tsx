@@ -12,16 +12,20 @@ type Inputs = {
 
 const Login: FC = () => {
   const { setLoginStatus } = useContext(Context);
+
+  // route handlers
   const history = useHistory();
   const location = useLocation();
   const { from }: any = location.state || { from: { pathname: "/" } };
 
+  // react hook form validations
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
 
+  // upon form submit, checks for authentication with token. Then takes users back to the page if authenticated
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const url = "http://163.47.115.230:30000/api/login";
 

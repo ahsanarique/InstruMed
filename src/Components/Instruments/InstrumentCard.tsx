@@ -8,6 +8,7 @@ interface Props {
   getInstrumentData: (item: ModelTypes) => void;
 }
 
+// Model types data for main page
 const InstrumentCard: FC<Props> = ({ item, getInstrumentData }) => {
   return (
     <Card

@@ -15,6 +15,7 @@ type Inputs = {
 const AddInstrument: FC = () => {
   const { deviceType, addNewModelType } = useContext(Context);
 
+  // TypeId of new item to be added
   const [deviceTypeId, setDeviceTypeId] = useState<number>(0);
 
   const {
@@ -23,16 +24,17 @@ const AddInstrument: FC = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
+  // takes form data and passing it to context state
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     if (data.Comment === "Select Device Type") {
       alert("Please Select a Valid Description");
     } else {
       data.TypeId = deviceTypeId;
-      console.log(data);
       addNewModelType(data);
     }
   };
 
+  // Upon checking description, sets the corresponding typeId of new model
   const handleValueChange = (e: any) => {
     const typeId = deviceType.find(
       (item: DeviceTypes) => item.Description === e.target.value

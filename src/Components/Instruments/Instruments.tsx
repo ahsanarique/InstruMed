@@ -14,6 +14,7 @@ const Instruments: FC = () => {
     dataTitle,
   } = useContext(Context);
 
+  // Modal state and event handlers
   const [modalShow, setModalShow] = useState(false);
   const handleClose = () => {
     setModalShow(false);

@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import DashboardNav from "../DashboardNav/DashboardNav";
 import AddInstrument from "../AddInstrument/AddInstrument";
-import Footer from "../../Shared/Footer/Footer";
 
 const DashboardHome = () => {
   return (
@@ -21,7 +20,6 @@ const DashboardHome = () => {
           </Switch>
         </Col>
       </Row>
-      <Footer />
     </section>
   );
 };

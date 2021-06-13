@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 const NavigationBar = () => {
-  const { loginStatus } = useContext(Context);
+  const { loginStatus, setLoginStatus } = useContext(Context);
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -26,7 +26,9 @@ const NavigationBar = () => {
               Login
             </Link>
           ) : (
-            <Nav.Link className="mx-3">Logout</Nav.Link>
+            <Nav.Link className="mx-3" onClick={() => setLoginStatus(false)}>
+              Logout
+            </Nav.Link>
           )}
         </Nav>
       </Navbar.Collapse>

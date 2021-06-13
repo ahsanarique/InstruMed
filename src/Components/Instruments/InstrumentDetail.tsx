@@ -11,6 +11,8 @@ interface Props {
   dataTitle: string;
 }
 
+// showing model data upon clicking on a model type
+
 const InstrumentDetail: FC<Props> = ({
   show,
   onHide,
